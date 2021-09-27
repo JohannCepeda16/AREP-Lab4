@@ -2,7 +2,6 @@ package edu.escuelaing.arep.services;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.google.gson.Gson;
