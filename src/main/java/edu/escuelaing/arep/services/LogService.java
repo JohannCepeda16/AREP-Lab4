@@ -25,16 +25,7 @@ public class LogService {
     public static List<DBObject> pushData(Request req, Response res) throws UnknownHostException {
         List<DBObject> response = new ArrayList<>();
         try {
-            Cadena data = gson.fromJson(JsonParser.parseString(req.body()), Cadena.class);
-            MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
-            DB database = mongoClient.getDB("AREP");
-            DBCollection collection = database.getCollection("logs");
-            collection.insert(new BasicDBObject("data", data));
-            DBCursor cursor = collection.find().limit(10);
-            while (cursor.hasNext()) {
-                response.add(cursor.next());
-            }
-
+            System.out.println(req.body());
         } catch (Exception e) {
             System.out.println(e.getMessage());
 
