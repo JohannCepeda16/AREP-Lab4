@@ -55,7 +55,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.tx
 ## Documentacion
 
 La aplicacion se encuentra desplegada dentro de un contenedor de docker 
-![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/docker.PNG)
+![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/dockerPNG.PNG)
 
 Conectada a una instancia de mongodb donde contamos con algunos registros realizados anteriormente
 ![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/mongo.PNG)
