@@ -55,13 +55,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.tx
 ## Diseño
 
 La aplicacion se encuentra desplegada dentro de un contenedor de docker 
-[!img](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/docker.PNG)
+[](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/docker.PNG)
 
 Conectada a una instancia de mongodb donde contamos con algunos registros realizados anteriormente
-[!img](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/mongo.PNG)
+[](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/mongo.PNG)
 
 A su vez, se encuentra desplegada en una maquina virtual ofrecida por AWS en el contexto EC2
-[!img](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/aws.PNG)
+[](https://github.com/JohannCepeda16/AREP-Lab4/tree/main/resources/aws.PNG)
 
 ## JavaDoc
 
