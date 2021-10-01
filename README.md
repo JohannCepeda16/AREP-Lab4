@@ -52,7 +52,7 @@ mvn test
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.txt) file for details
 
-## Diseño
+## Documentacion
 
 La aplicacion se encuentra desplegada dentro de un contenedor de docker 
 ![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/docker.PNG)
@@ -62,6 +62,9 @@ Conectada a una instancia de mongodb donde contamos con algunos registros realiz
 
 A su vez, se encuentra desplegada en una maquina virtual ofrecida por AWS en el contexto EC2
 ![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/aws.PNG)
+
+Una vez tengamos nuestra maquina, procederemos a desplegar nuestro contenedor en la instancia de AWS
+![](https://github.com/JohannCepeda16/AREP-Lab4/blob/main/resources/instance.PNG)
 
 ## JavaDoc
 
