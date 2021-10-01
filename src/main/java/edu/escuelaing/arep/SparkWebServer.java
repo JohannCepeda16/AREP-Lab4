@@ -4,8 +4,6 @@ import static spark.Spark.*;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
