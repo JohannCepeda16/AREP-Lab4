@@ -3,37 +3,44 @@ package edu.escuelaing.arep;
 import static spark.Spark.*;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
 import edu.escuelaing.arep.services.LogService;
 
 public class SparkWebServer {
 
-  public static void main(String... args) throws IOException {
-    port(getPort());
-    init();
-    get("/hello", (req, res) -> "Hello World");
-    post("/push", (req, res) -> LogService.pushData(req, res));
-    connection();
-  }
+	private static boolean isConnected = false;
 
-  private static void connection() {
-    String connectionString = "mongodb://localhost:27017";
-    try (MongoClient mongoClient = MongoClients.create(connectionString)) {
-      List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
-      databases.forEach(db -> System.out.println(db.toJson()));
-    }
-  }
+	public static void main(String... args) throws IOException {
+		port(getPort());
+		init();
+		get("/status", (req, res) -> isConnected);
+		post("/push", (req, res) -> LogService.pushData(req, res));
+		connection();
+	}
 
-  private static int getPort() {
-    if (System.getenv("PORT") != null) {
-      return Integer.parseInt(System.getenv("PORT"));
-    }
-    return 4567;
-  }
+	private static void connection() {
+		MongoClient mongoClient;
+		try {
+			mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+			System.out.println("Sucessfull conected");
+			if (!mongoClient.isLocked()) {
+				isConnected = true;
+			}
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static int getPort() {
+		if (System.getenv("PORT") != null) {
+			return Integer.parseInt(System.getenv("PORT"));
+		}
+		return 4567;
+	}
 }

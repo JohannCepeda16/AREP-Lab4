@@ -14,6 +14,8 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
+import org.bson.Document;
+
 import edu.escuelaing.documents.Cadena;
 import spark.Request;
 import spark.Response;
@@ -22,14 +24,24 @@ public class LogService {
 
     static Gson gson = new Gson();
 
-    public static List<DBObject> pushData(Request req, Response res) throws UnknownHostException {
-        List<DBObject> response = new ArrayList<>();
+    public static List<String> pushData(Request req, Response res) throws UnknownHostException {
+        List<String> lastTenDocuments = new ArrayList<>();
+        MongoClient mongoClient;
         try {
-            System.out.println(req.body());
+            mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+            DB database = mongoClient.getDB("logs");
+            DBCollection collection = database.getCollection("cadenas");
+            collection.save(new BasicDBObject("cad", req.body()));
+            DBCursor cursor = collection.find();
+            while (cursor.hasNext()) {
+                System.out.println(gson.toJson(cursor.next()));
+                lastTenDocuments.add(gson.toJson(cursor.next()));
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
 
         }
-        return response;
+        return lastTenDocuments;
     }
 }
